@@ -7,7 +7,9 @@ namespace bullpgia {
 		Guesser() {};
 		virtual ~Guesser() {};
 		uint length;
-		virtual std::string guess() {};
+		virtual std::string guess() {
+			return "";
+		};
 		virtual void startNewGame(uint length) {
 			this->length = length;
 		};
