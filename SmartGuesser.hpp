@@ -1,6 +1,5 @@
 #pragma once
 #include "Guesser.hpp"
-#include <vector>
 namespace bullpgia {
 	class SmartGuesser : public Guesser
 	{
@@ -41,7 +40,6 @@ namespace bullpgia {
 			step 7:
 			done guess solution
 		*/
-		vector<int> blackList,codedigits,A,B;
 
 	};
 }
