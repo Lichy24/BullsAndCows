@@ -3,12 +3,6 @@
 std::string calculateBullAndPgia(std::string choose, std::string guess) {
 	int bull = 0, pgia = 0,maxdup;
 	std::string reply;
-	/*
-	if (choose.empty() || guess.empty())
-		throw "invalid input";
-	if (choose.length() != guess.length())
-		throw "inequal length";
-	*/
 	int i = 0,j = 0;
 	for (size_t i = 0; i < choose.length(); i++)
 	{

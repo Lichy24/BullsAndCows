@@ -1,6 +1,10 @@
 #pragma once
 #include "Guesser.hpp"
 #include "calculate.hpp"
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <map>
 namespace bullpgia {
 	class SmartGuesser : public Guesser
 	{
@@ -41,6 +45,25 @@ namespace bullpgia {
 			step 7:
 			done guess solution
 		*/
-
+	private:
+		bool first_try = true;
+		std::vector<std::vector<int>> combinations; //Master set of combinations 1111 to 6666
+		std::vector<std::vector<int>> candidateSolutions;
+		std::vector<std::vector<int>> nextGuesses;
+		std::vector<int> currentGuess;
+		std::string myguess;
+		std::vector<int> getNextGuess(std::vector<std::vector<int>> nextGuesses);
+		std::vector<int> getRandomCode();
+		void createSet();
+		void combinationRecursive(int combinationLength, int position, std::vector<int> &current, std::vector<int> &elements);
+		void removeCode(std::vector<std::vector<int>> &set, std::vector<int> currentCode);
+		void pruneCodes(std::vector<std::vector<int>> &set, std::vector<int> currentCode, std::string currentResponse);
+		std::vector<std::vector<int>> minmax();
+		int getMaxScore(std::map<std::string, int> inputMap);
+		int getMinScore(std::map<std::vector<int>, int> inputMap);
+		std::string vector_to_string(std::vector<int> vec);
+	public:
+		void learn(std::string reply);
+		std::string guess();
 	};
 }
