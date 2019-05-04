@@ -29,8 +29,6 @@ std::vector<int> bullpgia::SmartGuesser::getRandomCode()
 	int max = 9;
 	int min = 0;
 	int random;
-	//Returns the number of seconds since the UNIX epoch for a seed
-	srand(time(0));
 
 	for (int i = 0; i < length; ++i) {
 
