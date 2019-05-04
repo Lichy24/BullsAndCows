@@ -191,6 +191,6 @@ void bullpgia::SmartGuesser::learn(std::string reply)
 std::string bullpgia::SmartGuesser::guess()
 {
 	if (first_try)
-		bullpgia::SmartGuesser::currentGuess = { 1,1,2,2 };
+		bullpgia::SmartGuesser::currentGuess = getRandomCode();
 	return vector_to_string(bullpgia::SmartGuesser::currentGuess);
 }
