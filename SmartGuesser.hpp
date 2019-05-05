@@ -46,11 +46,12 @@ namespace bullpgia {
 			done guess solution
 		*/
 	private:
+		/*
 		bool first_try = true;
-		std::vector<std::vector<int>> combinations; //Master set of combinations 1111 to 6666
-		std::vector<std::vector<int>> candidateSolutions;
-		std::vector<std::vector<int>> nextGuesses;
-		std::vector<int> currentGuess;
+		static std::vector<std::vector<int>> combinations; //Master set of combinations 1111 to 6666
+		static std::vector<std::vector<int>> candidateSolutions;
+		static std::vector<std::vector<int>> nextGuesses;
+		static std::vector<int> currentGuess;
 		std::string myguess;
 		std::vector<int> getNextGuess(std::vector<std::vector<int>> nextGuesses);
 		std::vector<int> getRandomCode();
@@ -62,8 +63,24 @@ namespace bullpgia {
 		int getMaxScore(std::map<std::string, int> inputMap);
 		int getMinScore(std::map<std::vector<int>, int> inputMap);
 		std::string vector_to_string(std::vector<int> vec);
+	*/
+		std::string myguess;
+		std::vector<char> blacklist;
+		int bull_count[10];
+		std::vector<int> finalguess;
+		int bull, pgia,currentdigit,swap_digit,grpcheck,lastdigit;
+		int oldpgia=0,oldbull = -1,track;
+		int turn;
+		bool pick;
+		uint length;
+		std::string fillCode(char digit);
+		std::string Respones(uint bull,uint pgia);
+		int GroupsLeft(int arr[]);
+		std::string setFinalGuess(std::vector<int> vec);
+		std::string setFinalGuess(std::vector<int> vec,int lastdigit);
 	public:
 		void learn(std::string reply);
 		std::string guess();
+		void startNewGame(uint length);
 	};
 }
