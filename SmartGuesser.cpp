@@ -1,6 +1,5 @@
 #include "SmartGuesser.hpp"
-#include <iostream>
-#include <sstream>
+
 
 
 
@@ -45,6 +44,7 @@ std::string bullpgia::SmartGuesser::setFinalGuess(std::vector<int> vec)
 		ss << vec[i];
 	}
 	result = ss.str();
+	std::cout << turn << std::endl;
 	std::cout << result << std::endl;
 	return result;
 }
@@ -62,17 +62,13 @@ std::string bullpgia::SmartGuesser::setFinalGuess(std::vector<int> vec, int last
 
 void bullpgia::SmartGuesser::learn(std::string reply)
 {
-	//std::cout << reply << std::endl;
 	//done
 	if (reply == Respones(length, 0))
 		return;
 	std::istringstream(reply.substr(0, reply.find(","))) >> bull;
 	std::istringstream(reply.substr(1 + reply.find(","), reply.length() - 1)) >> pgia;
-	if (turn <= 10) {
-		if (reply == "0,0") {
-			blacklist.push_back(myguess[0]);
-		} 
-		else if (bull > 0) {
+	if ((turn-1) <= 10) {
+		if (bull > 0) {
 			bull_count[myguess[0]-'0'] = bull;
 		}
 	}
@@ -103,10 +99,7 @@ void bullpgia::SmartGuesser::learn(std::string reply)
 		}
 		if (pick){
 			grpcheck = GroupsLeft(bull_count);
-			if (grpcheck == 0) {
-				myguess = setFinalGuess(finalguess);
-			}
-			else if (grpcheck == 1) {
+			if (grpcheck <= 1) {
 				myguess = setFinalGuess(finalguess, lastdigit);
 			}
 			else {
@@ -169,25 +162,24 @@ std::string bullpgia::SmartGuesser::guess()
 	default:
 		break;
 	}
-	//std::cout << turn << std::endl;
-	//std::cout << myguess << std::endl;
 	turn++;
 	return myguess;
 }
 
 void bullpgia::SmartGuesser::startNewGame(uint length)
 {
+	std::cout << "start new game" << std::endl;
 	this->length = length;
 	turn = 1;
-	track = length;
-	currentdigit = -1;
+	track = 0;
+	currentdigit = 0;
+	lastdigit = 0;
 	pick = true;
 	
 	for (size_t i = 0; i < 10; i++)
 	{
 		bullpgia::SmartGuesser::bull_count[i] = 0;
 	}
-	blacklist.clear();
 	finalguess.clear();
 	for (size_t i = 0; i < length; i++)
 	{

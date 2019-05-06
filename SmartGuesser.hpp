@@ -2,9 +2,9 @@
 #include "Guesser.hpp"
 #include "calculate.hpp"
 #include <vector>
-#include <algorithm>
 #include <string>
-#include <map>
+#include <iostream>
+#include <sstream>
 namespace bullpgia {
 	class SmartGuesser : public Guesser
 	{
