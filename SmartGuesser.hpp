@@ -8,7 +8,6 @@
 namespace bullpgia {
 	class SmartGuesser : public Guesser
 	{
-		*/
 	private:
 		/*
 		bool first_try = true;
